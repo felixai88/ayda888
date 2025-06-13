@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATUN</title>
+    <style>
+        body {
+            background-color: #f5f6fa;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #form-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        #form-container h2 {
+            text-align: center;
+            color: #1e90ff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="number"],
+        select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #495057;
+            text-transform: uppercase; /* Konversi input menjadi huruf kapital */
+        }
+
+        input[type="submit"] {
+            background-color: #1e90ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0d6efd;
+        }
+
+        #footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="form-container">
+        <h2>INCENTIF AYDA/h2>
+        <form action="https://script.google.com/macros/s/AKfycbyLU7B6Plwl2zw1X8CnDbJrL5CPPpZxSVJ2QnevLMe50QsEfNqk5tzipcebXcAIkvwZ/exec" method="post" onsubmit="convertToUpper(event)">
+
+            <label for="namaD">NAMA DEBITUR:</label>
+            <input type="text" id="namaD" name="namaD" required>
+            <label for="namaD">NOPOL:</label>
+            <input type="text" id="NOPOL" name="NOPOL" required>
+            <label for="namaD">Nomor kontrak:</label>
+            <input type="text" id="NOKON" name="NOKON" required>
+            <label for="tangalin">Tanggal Input:</label>
+            <input type="date" id="tangalin" name="tangalin" required>
+            <label for="namaBTB">NAMA DI BUKU TABUNGAN:</label>
+            <input type="text" id="namaBTB" name="namaBTB" required>
+            <label for="norekd">NO REKENING DEBITUR:</label>
+            <input type="text" id="norekd" name="norekd" required>
+            <label for="bankd">NAMA BANK:</label>
+            <select id="bankd" name="bankd" required>
+                <option value="">Pilih Bank...</option>
+                <option value="002,BANK RAKYAT INDONESIA">BRI</option>
+                <option value="426,BANK MEGA">MEGA</option>
+                <option value="008,BANK MANDIRI">MANDIRI</option>
+                <option value="009,BANK NEGARA INDONESIA 1946">BNI</option>
+                <option value="011,BANK DANAMON INDONESIA">DANAMON</option>
+                <option value="013,BANK PERMATA">PERMATA</option>
+                <option value="014,BANK CENTRAL ASIA">BCA</option>
+                <option value="016,MAYBANK">MAYBANK</option>
+                <option value="022,BANK CIMB NIAGA">CIMB</option>
+                <option value="117,BANK SUMUT">SUMUT</option>
+                <option value="119,BANK RIAU">RIAU</option>
+                <option value="153,BANK SINARMAS">SINARMAS</option>
+                <option value="200,BANK TABUNGAN NEGARA">BTN</option>
+                <option value="451,BANK SYARIAH INDONESIA">BSI</option>
+                <option value="019,PANIN BANK">PANIN</option>
+                <option value="119,BANK BPD RIAU KEPRI">BANK BPD RIAU KEPRI</option>
+		        <option value="028,BANK OCBC NISP">OCBC</option>
+                <option value="118,BANK NAGARI / SUMBAR">BANK NAGARI / SUMBAR</option>
+                <option value="147,BANK SYARIAH MUAMALAT INDONESIA">BANK SYARIAH MUAMALAT INDONESIA</option>
+                <option value="213,BTPN">BTPN</option>
+            </select>
+
+            <script>
+                // Get the select element
+                var select = document.getElementById('bank');
+
+                // Convert options to array and sort in descending order by bank name
+                var options = Array.from(select.options);
+                options.sort(function(a, b) {
+                    var bankNameA = a.text.toUpperCase();
+                    var bankNameB = b.text.toUpperCase();
+                    if (bankNameA < bankNameB) return 1; // sort descending
+                    if (bankNameA > bankNameB) return -1;
+                    return 0;
+                });
+
+                // Clear existing options
+                select.innerHTML = '';
+
+                // Add sorted options back to select element
+                options.forEach(function(option) {
+                    select.appendChild(option);
+                });
+            </script>                      
+            <label for="cab">Cabang:</label>
+            <select id="cab" name="cab" required>
+            <option value="">Pilih Cabang...</option>
+            <option value="PBR">PBR</option>
+            <option value="DMI">DMI</option>
+            <option value="DRI">DRI</option>
+            <option value="UBT">UBT</option>
+            <option value="BBT">BBT</option>
+            <option value="NR">NR</option>
+            <option value="AMK">AMK</option>
+            <option value="TLK">TLK</option>
+            <option value="KDS">KDS</option>
+            <option value="BJI">BJI</option>
+            <option value="SRK">SRK</option>
+            <option value="PHU">PHU</option>
+	        <option value="PRG">PRG</option>
+            <option value="BTM">BTM</option>
+            <option value="PDG">PDG</option>
+	        <option value="PMS">PMS</option>
+	         <option value="PKC">PKC</option>
+             <option value="BNA">BNA</option>
+             <option value="LSM">LSM</option>
+             <option value="MLH">MLH</option>
+             <option value="BRN">BRN</option>
+             <option value="LGS">LGS/option>
+             <option value="TKN">TKN</option>
+             <option value="KTC">KTC</option>
+             <option value="BPD">BPD</option>
+             <option value="SGL">SGL</option>
+             <option value="SBM">SBM</option>
+              <option value="TTN">TTN</option>
+
+            </select>
+         
+            <label for="notf">NOMINAL TRANSFER INCENTIF:</label>
+            <input type="text" id="notf" name="notf" required oninput="formatCurrency(this)">
+           
+</select>
+
+    <label for="ketd">Keterangan:</label>
+    <select id="ketd" name="ketd" required>
+    <option value="">Pilih keterangan...</option>
+    <option value="INCENTIF AYDA R2">INCENTIF AYDA R2</option>
+    <!--option value="PENGGANTIAN LPK KASIR">PENGGANTIAN LPK KASIR</option-->
+    <option value="INCENTIF AYDA R4">INCENTIF AYDA R4</option>
+</select>
+            <input type="submit" value="Simpan Data">
+        </form>
+    </div>
+
+    <div id="footer">
+        SALAM HANGAT DARI PT CAPELLA MULTIDANA
+    </div>
+
+    <script>
+        // Function to format currency input
+        function formatCurrency(input) {
+            var num = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+            var formattedNum = new Intl.NumberFormat('id-ID').format(num); // Format with dot as thousand separator
+            input.value = formattedNum;
+        }
+
+        // Function to convert input values to uppercase before submitting
+        function convertToUpper(event) {
+            var inputs = document.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type === 'text' || inputs[i].type === 'date') {
+                    inputs[i].value = inputs[i].value.toUpperCase();
+                }
+            }
+
+            var selects = document.getElementsByTagName('select');
+            for (var j = 0; j < selects.length; j++) {
+                selects[j].value = selects[j].value.toUpperCase();
+            }
+        }
+    </script>
+</body>
+
+</html>
