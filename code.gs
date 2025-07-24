@@ -35,6 +35,9 @@ function doPost(e) {
       fileUrl
     ]);
 
+    const lastRow = sheet.getLastRow();
+    sheet.getRange(lastRow, 9).setNumberFormat("#,##0");
+
     return ContentService.createTextOutput(
       JSON.stringify({ success: true, message: "Data berhasil dikirim", fileUrl })
     )
