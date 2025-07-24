@@ -273,7 +273,7 @@
 
             <div class="form-group">
                 <label for="notf">NOMINAL TRANSFER INCENTIF:</label>
-                <input type="text" id="notf" name="notf" required >
+                <input type="number" id="notf" name="notf" required >
             </div>
             
             <div class="form-group">
@@ -393,9 +393,6 @@
                 if (typeof value === 'string') {
                     formData.set(key, value.toUpperCase());
                 }
-                if(key === "notf") {
-                    formData.set(key, formatCurrency(value));
-                }
             });
             const payload = Object.fromEntries(formData.entries());
 
@@ -406,7 +403,7 @@
             }
 
             try {
-                const response = await fetch("https://script.google.com/macros/s/AKfycbyZcCA0foHo6Zi1VWWNFmu-ySaqaP846wiGlyVefQ2RYEJTaz7bwGTozUaNMfqgbDiF/exec", {
+                const response = await fetch("https://script.google.com/macros/s/AKfycbw8pYlakc7CsJ8pWVFATv6LGCSw4N6B7wnDVFufv1FlaWPkb8iF-13xueV2SDZiEXul/exec", {
                 method: "POST",
                 // headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
