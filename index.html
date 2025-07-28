@@ -498,9 +498,9 @@
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
-        const CLIENT_ID = '478246314895-14adlk70a53emqs33b523npghlg2bcn8.apps.googleusercontent.com';
-        const FOLDER_ID = '1yZRfBATVdYvfEQd8gzle1TMJO1OOfax3';
-        const GS_URL = 'https://script.google.com/macros/s/AKfycbx69liYJsHGF1gp8cDuR9noMjTSK1ZmI8kqEE-hC5kcnNjH14AQ_SiC4TMbc24jm2wZUQ/exec';
+        const CLIENT_ID = '511647918862-iecir65cnu3up5b1n6eare13ikvvkvrt.apps.googleusercontent.com';
+        const FOLDER_ID = '146pYLo88z3GsZOf4FRiOdyxNQKUnAeOM';
+        const GS_URL = 'https://script.google.com/macros/s/AKfycbzcOGE59eXhf6Ir18BpKQ0NA9OCHa8_Rlt_z8QfHnUcNYgCZ4ESzMS29Pa5TNaTK8A/exec';
         const SCOPES = 'https://www.googleapis.com/auth/drive.file';   
         const GDRIVE_API = `https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,webViewLink`;
 
@@ -547,6 +547,8 @@
                 });
 
                 fileInput.addEventListener('click', function() {
+                    file = null
+                    fileLink = null;
                     if(!accessToken){
                         requestAccessToken();
                     }
@@ -664,6 +666,7 @@ File Link       : ${payload.fileLink ? `<a href="${payload.fileLink}" target="_b
                 return alert("Please login first.");
             }
             gdrive.innerHTML = '<div class="spinner"></div>';
+            closeBtn.style.display = 'none'
             fileLink = null;
 
             const metadata = {
@@ -700,6 +703,7 @@ File Link       : ${payload.fileLink ? `<a href="${payload.fileLink}" target="_b
                     retry = false;
                     gdrive.innerHTML = '✅';
                     statusBar.classList.remove('status-failed');
+                    closeBtn.style.display = 'inline-block';
                 } else {
                     throw new Error;
                 }
@@ -723,6 +727,7 @@ File Link       : ${payload.fileLink ? `<a href="${payload.fileLink}" target="_b
                     });
                 }else{
                     retry = false;
+                    closeBtn.style.display = 'inline-block';
                 }
             }
         }
